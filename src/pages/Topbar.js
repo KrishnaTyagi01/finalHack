@@ -20,9 +20,10 @@ import ReceiptIcon from "@material-ui/icons/Receipt";
 import WorkIcon from "@material-ui/icons/Work";
 import clsx from "clsx";
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { logout } from "../utils/auth";
+// import { useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -122,6 +123,7 @@ function Copyright() {
 export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory()
   const [open, setOpen] = React.useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleDrawerOpen = () => {
@@ -227,7 +229,10 @@ export default function MiniDrawer() {
             <ListItemText primary="Get Resume" />
           </ListItem>
           </Link>
-          <ListItem style ={{color:'red'}} button onClick={()=> logout()}>
+          <ListItem style ={{color:'red'}} button onClick={()=> {
+            logout()
+            history.push('/')
+            }}>
             <ListItemIcon>
               <ExitToAppIcon style ={{color:'red'}} />
             </ListItemIcon>

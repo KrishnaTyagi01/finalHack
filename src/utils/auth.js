@@ -18,7 +18,7 @@ export const logout = () => {
     if(typeof window !== "undefined"){
         localStorage.removeItem("userData");
 
-        window.location.reload()
+        // window.location.reload()
     }
 
   }
